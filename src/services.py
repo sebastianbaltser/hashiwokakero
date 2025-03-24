@@ -1,14 +1,13 @@
 class SolvePuzzle:
+    def __init__(self, input):
+        self.input = input
+
     def __call__(self):
-        puzzle = (
-            " 1 \n"
-            "   \n"
-            " 1 \n"
-        )
+        puzzle = self.input.read()
+
         solution = (
             " 1 \n"
             " | \n"
             " 1 \n"
         )
         return solution
-    
