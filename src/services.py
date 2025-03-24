@@ -1,9 +1,9 @@
 class SolvePuzzle:
-    def __init__(self, input):
-        self.input = input
+    def __init__(self, reader):
+        self.reader = reader
 
     def __call__(self):
-        puzzle = self.input.read()
+        puzzle = self.reader.read()
 
         solution = (
             " 1 \n"

@@ -1,9 +1,9 @@
-from reader import UserInput
+from reader import User
 
-class TestUserInput:
+class TestUser:
     def tests_returns_input(self):
-        user_input = UserInput()
-        result = user_input.read()
+        user = User()
+        result = user.read()
         assert result == (
             " 1 \n"
             "   \n"

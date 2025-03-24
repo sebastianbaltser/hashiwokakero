@@ -1,11 +1,11 @@
 from services import SolvePuzzle
-from reader import UserInput
+from reader import User
 
 
 class TestSolvePuzzle:
     def test_application(self):
-        user_input = UserInput()
-        app = SolvePuzzle(user_input)
+        reader = User()
+        app = SolvePuzzle(reader)
         result = app()
         expected = (
             " 1 \n"
@@ -13,4 +13,3 @@ class TestSolvePuzzle:
             " 1 \n"
         )
         assert result == expected
-        
