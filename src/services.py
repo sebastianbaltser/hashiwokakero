@@ -1,6 +1,7 @@
 class SolvePuzzle:
-    def __init__(self, reader):
+    def __init__(self, reader, console):
         self.reader = reader
+        self.console = console
 
     def __call__(self):
         puzzle = self.reader.read()
@@ -10,4 +11,6 @@ class SolvePuzzle:
             " | \n"
             " 1 \n"
         )
-        return solution
+
+        self.console.print(solution)
+        
