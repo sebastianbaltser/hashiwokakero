@@ -3,6 +3,7 @@ from reader import User
 from reader import StubbedInput
 from output import Console
 
+
 class TestSolvePuzzle:
     def test_application(self):
         stubbed_input = StubbedInput()
@@ -12,10 +13,6 @@ class TestSolvePuzzle:
         output = console.track_output()
         app()
 
-        expected = (
-            " 1 \n"
-            " | \n"
-            " 1 \n"
-        )
-        
+        expected = " 1 \n | \n 1 \n"
+
         assert expected in output
