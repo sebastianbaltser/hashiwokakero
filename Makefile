@@ -4,4 +4,6 @@ build:
 
 tests: 
 	pytest src/tests
-	
+
+run:
+	.venv/bin/python3 src/__main__.py
