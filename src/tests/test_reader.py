@@ -28,3 +28,9 @@ class TestUser:
         result = user.read()
         assert result[0][1] is None
         assert result[2][1] == 1
+
+    def test_places_numbers_in_correct_positions(self):
+        stubbed_input = StubbedInput(response="1  \n   \n   \n")
+        user = User(stubbed_input)
+        result = user.read()
+        assert result[0][0] == 1
