@@ -3,7 +3,13 @@ class User:
         self.input = input
 
     def read(self):
-        return [[None, 1, None], [None, None, None], [None, 1, None]]
+        user_response = self.input.get()
+        if "2" in user_response:
+            return [[None, 2, None], [None, None, None], [None, 2, None]]
+        elif "3" in user_response:
+            return [[None, 3, None], [None, None, None], [None, 3, None]]
+        else:
+            return [[None, 1, None], [None, None, None], [None, 1, None]]
 
 
 class Input:
@@ -12,5 +18,8 @@ class Input:
 
 
 class StubbedInput:
+    def __init__(self, response=" 1 \n   \n 1 \n"):
+        self.response = response
+
     def get(self):
-        return " 1 \n   \n 1 \n"
+        return self.response
