@@ -4,12 +4,11 @@ class User:
 
     def read(self):
         user_response = self.input.get()
-        if "2" in user_response:
-            return [[None, 2, None], [None, None, None], [None, 2, None]]
-        elif "3" in user_response:
-            return [[None, 3, None], [None, None, None], [None, 3, None]]
-        else:
-            return [[None, 1, None], [None, None, None], [None, 1, None]]
+
+        number_1 = int(user_response[1]) if user_response[1] != " " else None
+        number_2 = int(user_response[9])
+
+        return [[None, number_1, None], [None, None, None], [None, number_2, None]]
 
 
 class Input:
