@@ -5,11 +5,14 @@ class User:
     def read(self):
         user_response = self.input.get()
 
-        number_1 = int(user_response[0]) if user_response[0] != " " else None
-        number_2 = int(user_response[1]) if user_response[1] != " " else None
-        number_8 = int(user_response[9]) if user_response[9] != " " else None
+        number_1 = self.parse_response_character(user_response[0])
+        number_2 = self.parse_response_character(user_response[1])
+        number_8 = self.parse_response_character(user_response[9])
 
         return [[number_1, number_2, None], [None, None, None], [None, number_8, None]]
+
+    def parse_response_character(self, response_character):
+        return int(response_character) if response_character != " " else None
 
 
 class Input:
