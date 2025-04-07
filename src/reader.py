@@ -4,12 +4,14 @@ class User:
 
     def read(self):
         user_response = self.input.get()
+        format_list = [[]]
+        for i in range(len(user_response) - 1):
+            if user_response[i] == "\n":
+                format_list.append([])
+            else:
+                format_list[-1].append(self.parse_response_character(user_response[i]))
 
-        number_1 = self.parse_response_character(user_response[0])
-        number_2 = self.parse_response_character(user_response[1])
-        number_8 = self.parse_response_character(user_response[9])
-
-        return [[number_1, number_2, None], [None, None, None], [None, number_8, None]]
+        return format_list
 
     def parse_response_character(self, response_character):
         return int(response_character) if response_character != " " else None
