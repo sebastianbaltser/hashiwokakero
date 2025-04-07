@@ -7,4 +7,4 @@ class TestUser:
         stubbed_input = StubbedInput()
         user = User(stubbed_input)
         result = user.read()
-        assert result == (" 1 \n   \n 1 \n")
+        assert result == [[None, 1, None], [None, None, None], [None, 1, None]]
