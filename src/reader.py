@@ -1,17 +1,35 @@
+from model import Island
+
+
 class User:
     def __init__(self, input):
         self.input = input
 
     def read(self):
         user_response = self.input.get()
-        format_list = [[]]
-        for i in range(len(user_response) - 1):
-            if user_response[i] == "\n":
-                format_list.append([])
-            else:
-                format_list[-1].append(self.parse_response_character(user_response[i]))
 
-        return format_list
+        x = 0
+        y = 2
+
+        islands = []
+
+        for el in user_response:
+            if el == "\n":
+                y -= 1
+                x = 0
+                continue
+
+            if el == " ":
+                x += 1
+                continue
+
+            if el.isdigit():
+                island = Island(x, y, int(el))
+                islands.append(island)
+                x += 1
+                continue
+
+        return islands
 
     def parse_response_character(self, response_character):
         return int(response_character) if response_character != " " else None
