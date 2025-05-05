@@ -45,4 +45,15 @@ class StubbedInput:
         self.response = response
 
     def get(self):
-        return self.response
+        if isinstance(self.response, str):
+            return self.response
+        else:
+            grid = ["   ", "   ", "   "]
+
+            for island in self.response:
+                row = grid[island.y]
+                new_row = row[: island.x] + str(island.value) + row[island.x + 1 :]
+                grid[island.y] = new_row
+
+            result = "\n".join(grid)
+            return result + "\n"
