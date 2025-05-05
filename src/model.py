@@ -12,3 +12,6 @@ class Island:
             return self.x == other.x and self.y == other.y and self.value == other.value
         else:
             return False
+
+    def __hash__(self) -> int:
+        return hash((self.x, self.y, self.value))
