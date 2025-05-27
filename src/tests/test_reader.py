@@ -10,7 +10,7 @@ class TestUser:
         stubbed_input = StubbedInput()
         user = User(stubbed_input)
         result = user.read()
-        assert result == [Island(1, 2, 1), Island(1, 0, 1)]
+        assert result == {Island(1, 2, 1), Island(1, 0, 1)}
 
     @pytest.mark.parametrize("number", [2, 3, 4, 5, 6, 7, 8])
     def test_converts_strings_to_numbers(self, number):
@@ -19,7 +19,7 @@ class TestUser:
         )
         user = User(stubbed_input)
         result = user.read()
-        assert result == [Island(1, 2, number), Island(1, 0, number)]
+        assert result == {Island(1, 2, number), Island(1, 0, number)}
 
 
 class TestStubbedInput:

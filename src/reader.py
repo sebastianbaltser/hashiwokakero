@@ -11,7 +11,7 @@ class User:
         x = 0
         y = 2
 
-        islands = []
+        islands = set()
 
         for el in user_response:
             if el == "\n":
@@ -25,7 +25,7 @@ class User:
 
             if el.isdigit():
                 island = Island(x, y, int(el))
-                islands.append(island)
+                islands.add(island)
                 x += 1
                 continue
 
@@ -41,7 +41,7 @@ class Input:
 
 
 class StubbedInput:
-    def __init__(self, response=[Island(1, 2, 1), Island(1, 0, 1)]):
+    def __init__(self, response={Island(1, 2, 1), Island(1, 0, 1)}):
         self.response = response
 
     def get(self):
