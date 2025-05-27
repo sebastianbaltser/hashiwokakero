@@ -1,6 +1,3 @@
-from model import Island
-
-
 class SolvePuzzle:
     def __init__(self, reader, console):
         self.reader = reader
@@ -8,12 +5,11 @@ class SolvePuzzle:
 
     def __call__(self):
         puzzle = self.reader.read()
-
-        if puzzle == {Island(0, 2, 1), Island(0, 0, 1)}:
-            solution = "1  \n|  \n1  \n"
-        elif puzzle == {Island(2, 2, 1), Island(2, 0, 1)}:
-            solution = "  1\n  |\n  1\n"
-        else:
-            solution = " 1 \n | \n 1 \n"
+        x = puzzle.pop().x
+        board = "   \n   \n   \n"
+        board = board[:x] + "1" + board[x + 1 :]
+        board = board[: x + 4] + "|" + board[x + 1 + 4 :]
+        board = board[: x + 8] + "1" + board[x + 1 + 8 :]
+        solution = board
 
         self.console.print(solution)
