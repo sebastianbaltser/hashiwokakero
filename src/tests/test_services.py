@@ -19,7 +19,7 @@ class TestSolvePuzzle:
 
         assert expected in output
 
-    @pytest.mark.parametrize("x", [0])
+    @pytest.mark.parametrize("x", [0, 2])
     def test_horizontally_shifted_islands(self, x):
         islands = {Island(x, 0, 1), Island(x, 2, 1)}
         stubbed_input = StubbedInput(islands)
