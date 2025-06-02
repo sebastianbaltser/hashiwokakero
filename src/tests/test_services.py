@@ -48,3 +48,12 @@ class TestSolvePuzzle:
         expected = "111\n|||\n111\n"
 
         assert expected in output
+
+    @pytest.mark.parametrize("y", [0, 1, 2])
+    def test_horizontal_bridge(self, y):
+        islands = {Island(0, y, 1), Island(2, y, 1)}
+        output = self.run_app(islands)
+
+        lines = output[0].splitlines()
+        assert lines[y] == "1-1"
+        assert len(lines) == 3
