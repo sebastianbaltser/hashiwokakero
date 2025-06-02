@@ -33,3 +33,18 @@ class TestSolvePuzzle:
         assert lines[0][x] == "1"
         assert lines[1][x] == "|"
         assert lines[2][x] == "1"
+
+    def test_multiple_vertical_bridges(self):
+        islands = {
+            Island(0, 0, 1),
+            Island(0, 2, 1),
+            Island(1, 2, 1),
+            Island(1, 0, 1),
+            Island(2, 0, 1),
+            Island(2, 2, 1),
+        }
+        output = self.run_app(islands)
+
+        expected = "111\n|||\n111\n"
+
+        assert expected in output
