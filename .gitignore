@@ -3,3 +3,4 @@ test-output.xml
 .DS_Store
 *__pycache__/
 Icon?
+settings.json
