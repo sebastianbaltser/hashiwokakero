@@ -57,3 +57,11 @@ class TestSolvePuzzle:
         lines = list(reversed(output[0].splitlines()))
         assert lines[y] == "1-1"
         assert len(lines) == 3
+
+    def test_island_with_two_bridges(self):
+        islands = {Island(2, 2, 1), Island(0, 2, 2), Island(0, 0, 1)}
+        output = self.run_app(islands)
+
+        expected = "2-1\n|  \n1  \n"
+
+        assert expected in output

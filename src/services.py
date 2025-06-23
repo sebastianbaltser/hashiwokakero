@@ -7,6 +7,8 @@ class SolvePuzzle:
         puzzle = self.reader.read()
         board = "   \n   \n   \n"
 
+        largest_value = max(island.value for island in puzzle)
+
         for island in puzzle:
             x = island.x
 
@@ -14,12 +16,14 @@ class SolvePuzzle:
             other_islands.remove(island)
 
             if any(other_island.x == island.x for other_island in other_islands):
-                board = board[:x] + "1" + board[x + 1 :]
+                board = board[:x] + f"{largest_value}" + board[x + 1 :]
                 board = board[: x + 4] + "|" + board[x + 1 + 4 :]
                 board = board[: x + 8] + "1" + board[x + 1 + 8 :]
             else:
                 line_index = 8 - 4 * island.y
-                board = board[:line_index] + "1-1" + board[line_index + 3 :]
+                board = (
+                    board[:line_index] + f"{largest_value}-1" + board[line_index + 3 :]
+                )
 
         solution = board
         self.console.print(solution)
