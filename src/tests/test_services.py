@@ -58,10 +58,16 @@ class TestSolvePuzzle:
         assert lines[y] == "1-1"
         assert len(lines) == 3
 
-    def test_island_with_two_bridges(self):
-        islands = {Island(2, 2, 1), Island(0, 2, 2), Island(0, 0, 1)}
+    @pytest.mark.parametrize(
+        "islands, expected",
+        [
+            ({Island(2, 2, 1), Island(0, 2, 2), Island(0, 0, 1)}, "2-1\n|  \n1  \n"),
+            ({Island(2, 0, 1), Island(2, 2, 2), Island(0, 2, 1)}, "1-2\n  |\n  1\n"),
+            ({Island(2, 0, 1), Island(0, 0, 2), Island(0, 2, 1)}, "1  \n|  \n2-1\n"),
+            ({Island(2, 2, 1), Island(2, 0, 2), Island(0, 0, 1)}, "  1\n  |\n1-2\n"),
+        ],
+    )
+    def test_island_with_two_bridges(self, islands, expected):
         output = self.run_app(islands)
-
-        expected = "2-1\n|  \n1  \n"
 
         assert expected in output
