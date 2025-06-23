@@ -35,3 +35,9 @@ class TestStubbedInput:
         stubbed_input = StubbedInput(islands)
         result = stubbed_input.get()
         assert result == "11 \n   \n11 \n"
+
+    def test_y_coordinates(self):
+        islands = {Island(0, 0, 1), Island(2, 2, 1), Island(0, 2, 2)}
+        stubbed_input = StubbedInput(islands)
+        result = stubbed_input.get()
+        assert result == "2 1\n   \n1  \n"

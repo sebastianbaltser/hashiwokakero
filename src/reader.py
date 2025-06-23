@@ -52,5 +52,6 @@ class StubbedInput:
             new_row = row[: island.x] + str(island.value) + row[island.x + 1 :]
             grid[island.y] = new_row
 
+        grid = reversed(grid)
         result = "\n".join(grid)
         return result + "\n"

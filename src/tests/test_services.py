@@ -54,6 +54,6 @@ class TestSolvePuzzle:
         islands = {Island(0, y, 1), Island(2, y, 1)}
         output = self.run_app(islands)
 
-        lines = output[0].splitlines()
+        lines = list(reversed(output[0].splitlines()))
         assert lines[y] == "1-1"
         assert len(lines) == 3
