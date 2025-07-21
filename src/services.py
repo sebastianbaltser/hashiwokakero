@@ -19,7 +19,9 @@ class SolvePuzzle:
                     for other_island in other_islands
                     if other_island.x == island.x
                 )
-                bottom, top = sorted([island, other_island], key=lambda i: i.y)
+                pair = (island, other_island)
+
+                bottom, top = sorted(pair, key=lambda i: i.y)
 
                 board = board[:x] + f"{top.value}" + board[x + 1 :]
                 board = board[: x + 4] + "|" + board[x + 1 + 4 :]
@@ -30,9 +32,12 @@ class SolvePuzzle:
                     for other_island in other_islands
                     if other_island.y == island.y
                 )
-                left, right = sorted([island, other_island], key=lambda i: i.x)
+                pair = (island, other_island)
 
-                line_index = 8 - 4 * island.y
+                left, right = sorted(pair, key=lambda i: i.x)
+
+                assert pair[0].y == pair[1].y
+                line_index = 8 - 4 * pair[0].y
                 board = (
                     board[:line_index]
                     + f"{left.value}-{right.value}"
