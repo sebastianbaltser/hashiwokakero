@@ -8,8 +8,6 @@ class SolvePuzzle:
         board = "   \n   \n   \n"
 
         for island in puzzle:
-            x = island.x
-
             other_islands = puzzle.copy()
             other_islands.remove(island)
 
@@ -23,6 +21,8 @@ class SolvePuzzle:
 
                 bottom, top = sorted(pair, key=lambda i: i.y)
 
+                assert pair[0].x == pair[1].x
+                x = pair[0].x
                 board = board[:x] + f"{top.value}" + board[x + 1 :]
                 board = board[: x + 4] + "|" + board[x + 1 + 4 :]
                 board = board[: x + 8] + f"{bottom.value}" + board[x + 1 + 8 :]
