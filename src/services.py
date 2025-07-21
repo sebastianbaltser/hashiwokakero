@@ -1,3 +1,6 @@
+from model import Board
+
+
 class SolvePuzzle:
     def __init__(self, reader, console):
         self.reader = reader
@@ -5,7 +8,8 @@ class SolvePuzzle:
 
     def __call__(self):
         puzzle = self.reader.read()
-        board = "   \n   \n   \n"
+
+        self.board = Board("   \n   \n   \n")
 
         for island in puzzle:
             other_islands = puzzle.copy()
@@ -19,13 +23,7 @@ class SolvePuzzle:
                 )
                 pair = (island, other_island)
 
-                bottom, top = sorted(pair, key=lambda i: i.y)
-
-                assert pair[0].x == pair[1].x
-                x = pair[0].x
-                board = board[:x] + f"{top.value}" + board[x + 1 :]
-                board = board[: x + 4] + "|" + board[x + 1 + 4 :]
-                board = board[: x + 8] + f"{bottom.value}" + board[x + 1 + 8 :]
+                self.board.draw_vertical(pair)
             else:
                 other_island = next(
                     other_island
@@ -34,15 +32,7 @@ class SolvePuzzle:
                 )
                 pair = (island, other_island)
 
-                left, right = sorted(pair, key=lambda i: i.x)
+                self.board.draw_horizontal(pair)
 
-                assert pair[0].y == pair[1].y
-                line_index = 8 - 4 * pair[0].y
-                board = (
-                    board[:line_index]
-                    + f"{left.value}-{right.value}"
-                    + board[line_index + 3 :]
-                )
-
-        solution = board
+        solution = self.board.board_string
         self.console.print(solution)

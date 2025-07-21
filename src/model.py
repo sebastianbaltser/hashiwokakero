@@ -1,3 +1,36 @@
+class Board:
+    def __init__(self, board_string):
+        self.board_string = board_string
+
+    def draw_horizontal(self, pair):
+        left, right = sorted(pair, key=lambda i: i.x)
+
+        assert pair[0].y == pair[1].y
+        line_index = 8 - 4 * pair[0].y
+        self.board_string = (
+            self.board_string[:line_index]
+            + f"{left.value}-{right.value}"
+            + self.board_string[line_index + 3 :]
+        )
+
+    def draw_vertical(self, pair):
+        bottom, top = sorted(pair, key=lambda i: i.y)
+
+        assert pair[0].x == pair[1].x
+        x = pair[0].x
+        self.board_string = (
+            self.board_string[:x] + f"{top.value}" + self.board_string[x + 1 :]
+        )
+        self.board_string = (
+            self.board_string[: x + 4] + "|" + self.board_string[x + 1 + 4 :]
+        )
+        self.board_string = (
+            self.board_string[: x + 8]
+            + f"{bottom.value}"
+            + self.board_string[x + 1 + 8 :]
+        )
+
+
 class Island:
     def __init__(self, x, y, value):
         self.x = x
