@@ -11,6 +11,16 @@ class SolvePuzzle:
 
         self.board = Board("   \n   \n   \n")
 
+        pairs = self.solve(puzzle)
+
+        for pair in pairs:
+            self.board.draw(pair)
+
+        solution = self.board.board_string
+        self.console.print(solution)
+
+    def solve(self, puzzle):
+        pairs = []
         for island in puzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
@@ -22,8 +32,16 @@ class SolvePuzzle:
                     if other_island.x == island.x
                 )
                 pair = (island, other_island)
+                pairs.append(pair)
+                if island.value == 2:
+                    other_island = next(
+                        other_island
+                        for other_island in other_islands
+                        if other_island.y == island.y
+                    )
+                    pair = (island, other_island)
+                    pairs.append(pair)
 
-                self.board.draw_vertical(pair)
             else:
                 other_island = next(
                     other_island
@@ -31,8 +49,5 @@ class SolvePuzzle:
                     if other_island.y == island.y
                 )
                 pair = (island, other_island)
-
-                self.board.draw_horizontal(pair)
-
-        solution = self.board.board_string
-        self.console.print(solution)
+                pairs.append(pair)
+        return pairs
