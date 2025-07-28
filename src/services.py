@@ -11,6 +11,7 @@ class SolvePuzzle:
 
         self.board = Board("   \n   \n   \n")
 
+        pairs = []
         for island in puzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
@@ -31,6 +32,9 @@ class SolvePuzzle:
                 )
                 pair = (island, other_island)
 
+            pairs.append(pair)
+
+        for pair in pairs:
             self.board.draw(pair)
 
         solution = self.board.board_string
