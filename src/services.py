@@ -23,7 +23,6 @@ class SolvePuzzle:
                 )
                 pair = (island, other_island)
 
-                self.board.draw_vertical(pair)
             else:
                 other_island = next(
                     other_island
@@ -32,6 +31,9 @@ class SolvePuzzle:
                 )
                 pair = (island, other_island)
 
+            if pair[0].x == pair[1].x:
+                self.board.draw_vertical(pair)
+            else:
                 self.board.draw_horizontal(pair)
 
         solution = self.board.board_string
