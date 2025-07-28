@@ -2,6 +2,12 @@ class Board:
     def __init__(self, board_string):
         self.board_string = board_string
 
+    def draw(self, pair):
+        if pair[0].x == pair[1].x:
+            self.draw_vertical(pair)
+        else:
+            self.draw_horizontal(pair)
+
     def draw_horizontal(self, pair):
         left, right = sorted(pair, key=lambda i: i.x)
 
