@@ -13,6 +13,7 @@ class Board:
 
         assert pair[0].y == pair[1].y
         row = self._board[pair[0].y]
+        assert row[1] == " "
         row[left.x] = str(left.value)
         row[1] = "-"
         row[right.x] = str(right.value)
@@ -24,6 +25,7 @@ class Board:
         x = pair[0].x
 
         self._board[top.y][x] = str(top.value)
+        assert self._board[1][x] == " "
         self._board[1][x] = "|"
         self._board[bottom.y][x] = str(bottom.value)
 

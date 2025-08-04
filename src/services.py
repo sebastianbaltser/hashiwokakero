@@ -32,7 +32,9 @@ class SolvePuzzle:
                     if other_island.x == island.x
                 )
                 pair = (island, other_island)
-                pairs.append(pair)
+                if tuple(reversed(pair)) not in pairs:
+                    pairs.append(pair)
+
                 if island.value == 2:
                     other_island = next(
                         other_island
@@ -40,7 +42,8 @@ class SolvePuzzle:
                         if other_island.y == island.y
                     )
                     pair = (island, other_island)
-                    pairs.append(pair)
+                    if tuple(reversed(pair)) not in pairs:
+                        pairs.append(pair)
 
             else:
                 other_island = next(
@@ -49,5 +52,6 @@ class SolvePuzzle:
                     if other_island.y == island.y
                 )
                 pair = (island, other_island)
-                pairs.append(pair)
+                if tuple(reversed(pair)) not in pairs:
+                    pairs.append(pair)
         return pairs
