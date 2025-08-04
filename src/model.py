@@ -1,6 +1,6 @@
 class Board:
-    def __init__(self, board_string):
-        self.board_string = board_string
+    def __init__(self):
+        self.board_string = "   \n   \n   \n"
 
     def draw(self, pair):
         if pair[0].x == pair[1].x:

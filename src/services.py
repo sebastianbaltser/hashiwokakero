@@ -9,7 +9,7 @@ class SolvePuzzle:
     def __call__(self):
         puzzle = self.reader.read()
 
-        self.board = Board("   \n   \n   \n")
+        self.board = Board()
 
         pairs = self.solve(puzzle)
 
