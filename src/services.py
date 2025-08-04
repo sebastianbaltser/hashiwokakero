@@ -16,7 +16,7 @@ class SolvePuzzle:
         for pair in pairs:
             self.board.draw(pair)
 
-        solution = self.board.board_string
+        solution = str(self.board)
         self.console.print(solution)
 
     def solve(self, puzzle):

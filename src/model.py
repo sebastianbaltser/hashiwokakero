@@ -1,6 +1,6 @@
 class Board:
     def __init__(self):
-        self.board_string = "   \n   \n   \n"
+        self._board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 
     def draw(self, pair):
         if pair[0].x == pair[1].x:
@@ -12,29 +12,25 @@ class Board:
         left, right = sorted(pair, key=lambda i: i.x)
 
         assert pair[0].y == pair[1].y
-        line_index = 8 - 4 * pair[0].y
-        self.board_string = (
-            self.board_string[:line_index]
-            + f"{left.value}-{right.value}"
-            + self.board_string[line_index + 3 :]
-        )
+        row = self._board[pair[0].y]
+        row[left.x] = str(left.value)
+        row[1] = "-"
+        row[right.x] = str(right.value)
 
     def draw_vertical(self, pair):
         bottom, top = sorted(pair, key=lambda i: i.y)
 
         assert pair[0].x == pair[1].x
         x = pair[0].x
-        self.board_string = (
-            self.board_string[:x] + f"{top.value}" + self.board_string[x + 1 :]
-        )
-        self.board_string = (
-            self.board_string[: x + 4] + "|" + self.board_string[x + 1 + 4 :]
-        )
-        self.board_string = (
-            self.board_string[: x + 8]
-            + f"{bottom.value}"
-            + self.board_string[x + 1 + 8 :]
-        )
+
+        self._board[top.y][x] = str(top.value)
+        self._board[1][x] = "|"
+        self._board[bottom.y][x] = str(bottom.value)
+
+    def __str__(self):
+        rows = ["".join(row) for row in self._board]
+        rows = reversed(rows)
+        return "\n".join(rows) + "\n"
 
 
 class Island:
