@@ -1,4 +1,4 @@
-from model import Board
+from model import Board, BridgeType
 
 
 class SolvePuzzle:
@@ -31,8 +31,8 @@ class SolvePuzzle:
                     for other_island in other_islands
                     if other_island.x == island.x
                 )
-                pair = (island, other_island, 1)
-                if (other_island, island, 1) not in pairs:
+                pair = (island, other_island, BridgeType.SINGLE)
+                if (other_island, island, BridgeType.SINGLE) not in pairs:
                     pairs.append(pair)
 
                 if island.value == 2:
@@ -41,8 +41,8 @@ class SolvePuzzle:
                         for other_island in other_islands
                         if other_island.y == island.y
                     )
-                    pair = (island, other_island, 1)
-                    if (other_island, island, 1) not in pairs:
+                    pair = (island, other_island, BridgeType.SINGLE)
+                    if (other_island, island, BridgeType.SINGLE) not in pairs:
                         pairs.append(pair)
 
             else:
