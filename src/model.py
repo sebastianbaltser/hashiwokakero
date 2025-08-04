@@ -9,7 +9,8 @@ class Board:
             self.draw_horizontal(pair)
 
     def draw_horizontal(self, pair):
-        left, right = sorted(pair, key=lambda i: i.x)
+        assert pair[2] == 1
+        left, right = sorted(pair[:2], key=lambda i: i.x)
 
         assert pair[0].y == pair[1].y
         row = self._board[pair[0].y]
@@ -19,7 +20,8 @@ class Board:
         row[right.x] = str(right.value)
 
     def draw_vertical(self, pair):
-        bottom, top = sorted(pair, key=lambda i: i.y)
+        assert pair[2] == 1
+        bottom, top = sorted(pair[:2], key=lambda i: i.y)
 
         assert pair[0].x == pair[1].x
         x = pair[0].x
