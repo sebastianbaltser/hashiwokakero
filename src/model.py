@@ -18,6 +18,7 @@ class Board:
     def draw_horizontal(self, pair):
         assert pair[2] == BridgeType.SINGLE
         left, right = sorted(pair[:2], key=lambda i: i.x)
+        assert left.x + 1 < right.x
 
         assert pair[0].y == pair[1].y
         row = self._board[pair[0].y]
@@ -29,6 +30,7 @@ class Board:
     def draw_vertical(self, pair):
         assert pair[2] == BridgeType.SINGLE
         bottom, top = sorted(pair[:2], key=lambda i: i.y)
+        assert bottom.y + 1 < top.y
 
         assert pair[0].x == pair[1].x
         x = pair[0].x
