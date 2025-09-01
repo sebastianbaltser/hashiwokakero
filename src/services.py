@@ -41,6 +41,7 @@ class SolvePuzzle:
                         for other_island in other_islands
                         if other_island.y == island.y
                     )
+
                     pair = (island, other_island, BridgeType.SINGLE)
                     if (other_island, island, BridgeType.SINGLE) not in pairs:
                         pairs.append(pair)
@@ -51,7 +52,7 @@ class SolvePuzzle:
                     for other_island in other_islands
                     if other_island.y == island.y
                 )
-                pair = (island, other_island, 1)
-                if (other_island, island, 1) not in pairs:
+                pair = (island, other_island, BridgeType.SINGLE)
+                if (other_island, island, BridgeType.SINGLE) not in pairs:
                     pairs.append(pair)
         return pairs
