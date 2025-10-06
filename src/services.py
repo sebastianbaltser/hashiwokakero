@@ -26,13 +26,13 @@ class SolvePuzzle:
             other_islands.remove(island)
 
             if any(
-                other_island.x == island.x and abs(other_island.y - island.y) > 1
+                island.is_vertically_aligned(other_island)
                 for other_island in other_islands
             ):
                 other_island = next(
                     other_island
                     for other_island in other_islands
-                    if other_island.x == island.x and abs(other_island.y - island.y) > 1
+                    if island.is_vertically_aligned(other_island)
                 )
                 pair = (island, other_island, BridgeType.SINGLE)
                 if (other_island, island, BridgeType.SINGLE) not in pairs:

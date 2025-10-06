@@ -63,3 +63,9 @@ class Island:
 
     def __hash__(self) -> int:
         return hash((self.x, self.y, self.value))
+
+    def is_vertically_aligned(self, other: "Island") -> bool:
+        if other.x == self.x and abs(other.y - self.y) > 1:
+            return True
+        else:
+            return False
