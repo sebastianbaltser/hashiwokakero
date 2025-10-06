@@ -58,6 +58,19 @@ class TestSolvePuzzle:
         assert lines[y] == "1-1"
         assert len(lines) == 3
 
+    def test_multiple_horizontal_bridges(self):
+        islands = {
+            Island(0, 2, 1),
+            Island(0, 1, 1),
+            Island(2, 2, 1),
+            Island(2, 1, 1),
+        }
+        output = self.run_app(islands)
+
+        expected = "1-1\n1-1\n   \n"
+
+        assert expected in output
+
     @pytest.mark.parametrize(
         "islands, expected",
         [

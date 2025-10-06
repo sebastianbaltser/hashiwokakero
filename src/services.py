@@ -25,11 +25,14 @@ class SolvePuzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
 
-            if any(other_island.x == island.x for other_island in other_islands):
+            if any(
+                other_island.x == island.x and abs(other_island.y - island.y) > 1
+                for other_island in other_islands
+            ):
                 other_island = next(
                     other_island
                     for other_island in other_islands
-                    if other_island.x == island.x
+                    if other_island.x == island.x and abs(other_island.y - island.y) > 1
                 )
                 pair = (island, other_island, BridgeType.SINGLE)
                 if (other_island, island, BridgeType.SINGLE) not in pairs:
