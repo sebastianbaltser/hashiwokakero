@@ -36,9 +36,6 @@ class SolvePuzzle:
                         for other_island in other_islands
                         if island.is_vertically_aligned(other_island)
                     )
-                    pair = (island, other_island, BridgeType.SINGLE)
-                    if (other_island, island, BridgeType.SINGLE) not in pairs:
-                        pairs.append(pair)
 
                 elif any(
                     island.is_horizontally_aligned(other_island)
@@ -50,7 +47,12 @@ class SolvePuzzle:
                         for other_island in other_islands
                         if island.is_horizontally_aligned(other_island)
                     )
-                    pair = (island, other_island, BridgeType.SINGLE)
-                    if (other_island, island, BridgeType.SINGLE) not in pairs:
-                        pairs.append(pair)
+
+                else:
+                    assert False, "remaining value but no aligned islands left"
+
+                pair = (island, other_island, BridgeType.SINGLE)
+                if (other_island, island, BridgeType.SINGLE) not in pairs:
+                    pairs.append(pair)
+
         return pairs
