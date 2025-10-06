@@ -65,7 +65,7 @@ class Island:
         return hash((self.x, self.y, self.value))
 
     def is_vertically_aligned(self, other: "Island") -> bool:
-        if other.x == self.x and abs(other.y - self.y) > 1:
-            return True
-        else:
-            return False
+        return other.x == self.x and abs(other.y - self.y) > 1
+
+    def is_horizontally_aligned(self, other: "Island") -> bool:
+        return other.y == self.y and abs(other.x - self.x) > 1

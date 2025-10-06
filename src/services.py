@@ -42,7 +42,7 @@ class SolvePuzzle:
                     other_island = next(
                         other_island
                         for other_island in other_islands
-                        if other_island.y == island.y
+                        if island.is_horizontally_aligned(other_island)
                     )
 
                     pair = (island, other_island, BridgeType.SINGLE)
@@ -53,7 +53,7 @@ class SolvePuzzle:
                 other_island = next(
                     other_island
                     for other_island in other_islands
-                    if other_island.y == island.y
+                    if island.is_horizontally_aligned(other_island)
                 )
                 pair = (island, other_island, BridgeType.SINGLE)
                 if (other_island, island, BridgeType.SINGLE) not in pairs:
