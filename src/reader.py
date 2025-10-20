@@ -9,7 +9,7 @@ class User:
         user_response = self.input.get()
 
         x = 0
-        y = 2
+        y = len(user_response.splitlines()) - 1
 
         islands = set()
 
@@ -45,7 +45,14 @@ class StubbedInput:
         self.islands = islands
 
     def get(self):
-        grid = ["   ", "   ", "   "]
+        x_max = max(island.x for island in self.islands)
+        y_max = max(island.y for island in self.islands)
+        grid_size = max(x_max, y_max) + 1
+
+        grid = []
+        
+        for i in range(grid_size):
+            grid.append(" " * grid_size)
 
         for island in self.islands:
             row = grid[island.y]
