@@ -15,7 +15,7 @@ class TestUser:
     @pytest.mark.parametrize("number", [2, 3, 4, 5, 6, 7, 8])
     def test_converts_strings_to_numbers(self, number):
         stubbed_input = StubbedInput(
-            response=[Island(1, 2, number), Island(1, 0, number)]
+            islands=[Island(1, 2, number), Island(1, 0, number)]
         )
         user = User(stubbed_input)
         result = user.read()

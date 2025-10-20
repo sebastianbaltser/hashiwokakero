@@ -41,13 +41,13 @@ class Input:
 
 
 class StubbedInput:
-    def __init__(self, response={Island(1, 2, 1), Island(1, 0, 1)}):
-        self.response = response
+    def __init__(self, islands={Island(1, 2, 1), Island(1, 0, 1)}):
+        self.islands = islands
 
     def get(self):
         grid = ["   ", "   ", "   "]
 
-        for island in self.response:
+        for island in self.islands:
             row = grid[island.y]
             new_row = row[: island.x] + str(island.value) + row[island.x + 1 :]
             grid[island.y] = new_row
