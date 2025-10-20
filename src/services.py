@@ -9,7 +9,11 @@ class SolvePuzzle:
     def __call__(self):
         puzzle = self.reader.read()
 
-        self.board = Board()
+        x_max = max(island.x for island in puzzle)
+        y_max = max(island.y for island in puzzle)
+        board_size = max(x_max, y_max) + 1
+
+        self.board = Board(board_size)
 
         pairs = self.solve(puzzle)
 

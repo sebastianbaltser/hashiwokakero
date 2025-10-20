@@ -6,8 +6,11 @@ class BridgeType(IntEnum):
 
 
 class Board:
-    def __init__(self):
-        self._board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    def __init__(self, size):
+        self.size = size
+        self._board = []
+        for i in range(self.size):
+            self._board.append([" "] * self.size)
 
     def draw(self, pair):
         if pair[0].x == pair[1].x:
