@@ -59,5 +59,6 @@ class SolvePuzzle:
                 pair = (island, other_island, BridgeType.SINGLE)
                 if (other_island, island, BridgeType.SINGLE) not in pairs:
                     pairs.append(pair)
+                    other_islands.remove(other_island)
 
         return pairs

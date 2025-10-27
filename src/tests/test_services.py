@@ -102,3 +102,10 @@ class TestSolvePuzzle:
         expected = "1-2-1\n     \n     \n     \n     \n"
 
         assert expected in output
+
+    def test_consecutive_vertical_bridges(self):
+        islands = {Island(0, 4, 1), Island(0, 2, 2), Island(0, 0, 1)}
+        output = self.run_app(islands)
+        expected = "1    \n|    \n2    \n|    \n1    \n"
+
+        assert expected in output
