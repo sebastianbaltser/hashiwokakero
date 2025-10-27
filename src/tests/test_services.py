@@ -88,3 +88,12 @@ class TestSolvePuzzle:
         output = self.run_app(islands)
 
         assert expected in output
+
+    def test_large_grid(self):
+        islands = {Island(1, 3, 1), Island(3, 1, 1), Island(3, 3, 2)}
+
+        output = self.run_app(islands)
+
+        expected = " 1-2\n   |\n   1\n    \n"
+
+        assert expected in output

@@ -20,7 +20,7 @@ class TestUser:
         user = User(stubbed_input)
         result = user.read()
         assert result == {Island(1, 2, number), Island(1, 0, number)}
-    
+
     def test_larger_board(self):
         islands = {Island(0, 0, 2), Island(3, 0, 2), Island(0, 3, 2), Island(3, 3, 2)}
         stubbed_input = StubbedInput(islands)

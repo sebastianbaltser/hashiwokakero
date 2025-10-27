@@ -27,7 +27,7 @@ class Board:
         row = self._board[pair[0].y]
         assert row[1] == " "
         row[left.x] = str(left.value)
-        row[1] = "-"
+        row[(left.x + right.x) // 2] = "-"
         row[right.x] = str(right.value)
 
     def draw_vertical(self, pair):
@@ -37,10 +37,11 @@ class Board:
 
         assert pair[0].x == pair[1].x
         x = pair[0].x
+        bridge_y = (top.y + bottom.y) // 2
 
         self._board[top.y][x] = str(top.value)
-        assert self._board[1][x] == " "
-        self._board[1][x] = "|"
+        assert self._board[bridge_y][x] == " "
+        self._board[bridge_y][x] = "|"
         self._board[bottom.y][x] = str(bottom.value)
 
     def __str__(self):
