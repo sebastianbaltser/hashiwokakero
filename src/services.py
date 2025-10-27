@@ -1,8 +1,9 @@
-from model import Board, BridgeType
+from model import Board, BridgeType, Island
+from reader import User
 
 
 class SolvePuzzle:
-    def __init__(self, reader, console):
+    def __init__(self, reader: User, console):
         self.reader = reader
         self.console = console
 
@@ -23,7 +24,7 @@ class SolvePuzzle:
         solution = str(self.board)
         self.console.print(solution)
 
-    def solve(self, puzzle):
+    def solve(self, puzzle: set[Island]):
         pairs = []
         for island in puzzle:
             other_islands = puzzle.copy()

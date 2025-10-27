@@ -5,7 +5,7 @@ class User:
     def __init__(self, input):
         self.input = input
 
-    def read(self):
+    def read(self) -> set[Island]:
         user_response = self.input.get()
 
         x = 0
@@ -50,7 +50,7 @@ class StubbedInput:
         grid_size = max(x_max, y_max) + 1
 
         grid = []
-        
+
         for i in range(grid_size):
             grid.append(" " * grid_size)
 
