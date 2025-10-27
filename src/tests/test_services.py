@@ -91,9 +91,14 @@ class TestSolvePuzzle:
 
     def test_large_grid(self):
         islands = {Island(1, 3, 1), Island(3, 1, 1), Island(3, 3, 2)}
-
         output = self.run_app(islands)
-
         expected = " 1-2\n   |\n   1\n    \n"
+
+        assert expected in output
+
+    def test_consecutive_horizontal_bridges(self):
+        islands = {Island(2, 4, 2), Island(0, 4, 1), Island(4, 4, 1)}
+        output = self.run_app(islands)
+        expected = "1-2-1\n     \n     \n     \n     \n"
 
         assert expected in output
