@@ -56,6 +56,7 @@ class Island:
         self.y = y
         self.value = value
         self.remaining_value = value
+        self.connected_islands = set()
 
     def __repr__(self):
         return f"Island(x={self.x!r}, y={self.y!r}, value={self.value!r})"
@@ -76,5 +77,11 @@ class Island:
         return other.y == self.y and abs(other.x - self.x) == 2
 
     def build_bridge(self, other: "Island"):
+        self._build_bridge(other)
+        other._build_bridge(self)
+
+    def _build_bridge(self, other):
+        assert 0 < self.remaining_value
+        assert other not in self.connected_islands
         self.remaining_value -= 1
-        other.remaining_value -= 1
+        self.connected_islands.add(other)

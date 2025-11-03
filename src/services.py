@@ -36,7 +36,7 @@ class SolvePuzzle:
             for i in range(island.remaining_value):
                 if any(
                     island.is_vertically_aligned(other_island)
-                    and (island, other_island, BridgeType.SINGLE) not in pairs
+                    and other_island not in island.connected_islands
                     for other_island in other_islands
                 ):
                     other_island = next(
@@ -47,7 +47,7 @@ class SolvePuzzle:
 
                 elif any(
                     island.is_horizontally_aligned(other_island)
-                    and (island, other_island, BridgeType.SINGLE) not in pairs
+                    and other_island not in island.connected_islands
                     for other_island in other_islands
                 ):
                     other_island = next(
