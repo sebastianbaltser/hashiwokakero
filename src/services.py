@@ -29,6 +29,9 @@ class SolvePuzzle:
         for island in puzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
+            other_islands = {
+                island for island in other_islands if island.remaining_value
+            }
 
             for i in range(island.remaining_value):
                 if any(
@@ -60,5 +63,10 @@ class SolvePuzzle:
                 if (other_island, island, BridgeType.SINGLE) not in pairs:
                     pairs.append(pair)
                     other_islands.remove(other_island)
+                    other_island.remaining_value -= 1
+                    island.remaining_value -= 1
+
+                else:
+                    assert False, "double solved bridge"
 
         return pairs
