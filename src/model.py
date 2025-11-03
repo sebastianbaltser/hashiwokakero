@@ -55,6 +55,7 @@ class Island:
         self.x = x
         self.y = y
         self.value = value
+        self.remaining_value = value
 
     def __repr__(self):
         return f"Island(x={self.x!r}, y={self.y!r}, value={self.value!r})"

@@ -30,7 +30,7 @@ class SolvePuzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
 
-            for i in range(island.value):
+            for i in range(island.remaining_value):
                 if any(
                     island.is_vertically_aligned(other_island)
                     and (island, other_island, BridgeType.SINGLE) not in pairs
