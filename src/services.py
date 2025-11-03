@@ -63,8 +63,7 @@ class SolvePuzzle:
                 if (other_island, island, BridgeType.SINGLE) not in pairs:
                     pairs.append(pair)
                     other_islands.remove(other_island)
-                    other_island.remaining_value -= 1
-                    island.remaining_value -= 1
+                    island.build_bridge(other_island)
 
                 else:
                     assert False, "double solved bridge"

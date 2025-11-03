@@ -74,3 +74,7 @@ class Island:
 
     def is_horizontally_aligned(self, other: "Island") -> bool:
         return other.y == self.y and abs(other.x - self.x) == 2
+
+    def build_bridge(self, other: "Island"):
+        self.remaining_value -= 1
+        other.remaining_value -= 1
