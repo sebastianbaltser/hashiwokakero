@@ -60,12 +60,8 @@ class SolvePuzzle:
                     assert False, "remaining value but no aligned islands left"
 
                 pair = (island, other_island, BridgeType.SINGLE)
-                if (other_island, island, BridgeType.SINGLE) not in pairs:
-                    pairs.append(pair)
-                    other_islands.remove(other_island)
-                    island.build_bridge(other_island)
-
-                else:
-                    assert False, "double solved bridge"
+                pairs.append(pair)
+                other_islands.remove(other_island)
+                island.build_bridge(other_island)
 
         return pairs
