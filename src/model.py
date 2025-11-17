@@ -12,6 +12,12 @@ class Board:
         for i in range(self.size):
             self._board.append([" "] * self.size)
 
+    def draw_puzzle(self, puzzle):
+        pairs = self.create_pairs(puzzle)
+
+        for pair in pairs:
+            self.draw(pair)
+
     def create_pairs(self, puzzle):
         pairs = []
         for island in puzzle:

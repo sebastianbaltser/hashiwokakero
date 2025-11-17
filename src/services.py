@@ -17,16 +17,10 @@ class SolvePuzzle:
         self.board = Board(board_size)
 
         puzzle = self.solve(puzzle)
-        self.draw_puzzle(puzzle)
+        self.board.draw_puzzle(puzzle)
 
         solution = str(self.board)
         self.console.print(solution)
-
-    def draw_puzzle(self, puzzle):
-        pairs = self.board.create_pairs(puzzle)
-
-        for pair in pairs:
-            self.board.draw(pair)
 
     def solve(self, puzzle: set[Island]):
         for island in puzzle:
