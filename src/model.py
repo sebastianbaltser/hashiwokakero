@@ -12,6 +12,19 @@ class Board:
         for i in range(self.size):
             self._board.append([" "] * self.size)
 
+    def create_pairs(self, puzzle):
+        pairs = []
+        for island in puzzle:
+            for other_island in island.connected_islands:
+                pair = (island, other_island, BridgeType.SINGLE)
+
+                if (pair[1], pair[0], pair[2]) in pairs:
+                    continue
+                else:
+                    pairs.append(pair)
+
+        return pairs
+
     def draw(self, pair):
         if pair[0].x == pair[1].x:
             self.draw_vertical(pair)

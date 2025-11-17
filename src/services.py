@@ -1,4 +1,4 @@
-from model import Board, BridgeType, Island
+from model import Board, Island
 from reader import User
 
 
@@ -17,7 +17,7 @@ class SolvePuzzle:
         self.board = Board(board_size)
 
         puzzle = self.solve(puzzle)
-        pairs = self._create_pairs(puzzle)
+        pairs = self.board.create_pairs(puzzle)
 
         for pair in pairs:
             self.board.draw(pair)
@@ -63,16 +63,3 @@ class SolvePuzzle:
                 island.build_bridge(other_island)
 
         return puzzle
-
-    def _create_pairs(self, puzzle):
-        pairs = []
-        for island in puzzle:
-            for other_island in island.connected_islands:
-                pair = (island, other_island, BridgeType.SINGLE)
-
-                if (pair[1], pair[0], pair[2]) in pairs:
-                    continue
-                else:
-                    pairs.append(pair)
-
-        return pairs
