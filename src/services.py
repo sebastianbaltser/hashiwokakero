@@ -16,7 +16,8 @@ class SolvePuzzle:
 
         self.board = Board(board_size)
 
-        pairs = self.solve(puzzle)
+        puzzle = self.solve(puzzle)
+        pairs = self._create_pairs(puzzle)
 
         for pair in pairs:
             self.board.draw(pair)
@@ -61,8 +62,7 @@ class SolvePuzzle:
                 other_islands.remove(other_island)
                 island.build_bridge(other_island)
 
-        pairs = self._create_pairs(puzzle)
-        return pairs
+        return puzzle
 
     def _create_pairs(self, puzzle):
         pairs = []
