@@ -25,7 +25,6 @@ class SolvePuzzle:
         self.console.print(solution)
 
     def solve(self, puzzle: set[Island]):
-        pairs = []
         for island in puzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
@@ -62,7 +61,14 @@ class SolvePuzzle:
                 other_islands.remove(other_island)
                 island.build_bridge(other_island)
 
+        pairs = []
+        for island in puzzle:
+            for other_island in island.connected_islands:
                 pair = (island, other_island, BridgeType.SINGLE)
-                pairs.append(pair)
+
+                if (pair[1], pair[0], pair[2]) in pairs:
+                    continue
+                else:
+                    pairs.append(pair)
 
         return pairs
