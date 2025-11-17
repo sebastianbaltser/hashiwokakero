@@ -17,7 +17,7 @@ class SolvePuzzle:
         self.board = Board(board_size)
 
         puzzle = self.solve(puzzle)
-        self.board.draw_puzzle(puzzle)
+        self.board.draw(puzzle)
 
         solution = str(self.board)
         self.console.print(solution)

@@ -12,11 +12,11 @@ class Board:
         for i in range(self.size):
             self._board.append([" "] * self.size)
 
-    def draw_puzzle(self, puzzle):
+    def draw(self, puzzle):
         pairs = self._create_pairs(puzzle)
 
         for pair in pairs:
-            self._draw(pair)
+            self._draw_pair(pair)
 
     def _create_pairs(self, puzzle):
         pairs = []
@@ -31,7 +31,7 @@ class Board:
 
         return pairs
 
-    def _draw(self, pair):
+    def _draw_pair(self, pair):
         if pair[0].x == pair[1].x:
             self._draw_vertical(pair)
         else:
