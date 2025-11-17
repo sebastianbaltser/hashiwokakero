@@ -13,12 +13,12 @@ class Board:
             self._board.append([" "] * self.size)
 
     def draw_puzzle(self, puzzle):
-        pairs = self.create_pairs(puzzle)
+        pairs = self._create_pairs(puzzle)
 
         for pair in pairs:
-            self.draw(pair)
+            self._draw(pair)
 
-    def create_pairs(self, puzzle):
+    def _create_pairs(self, puzzle):
         pairs = []
         for island in puzzle:
             for other_island in island.connected_islands:
@@ -31,13 +31,13 @@ class Board:
 
         return pairs
 
-    def draw(self, pair):
+    def _draw(self, pair):
         if pair[0].x == pair[1].x:
-            self.draw_vertical(pair)
+            self._draw_vertical(pair)
         else:
-            self.draw_horizontal(pair)
+            self._draw_horizontal(pair)
 
-    def draw_horizontal(self, pair):
+    def _draw_horizontal(self, pair):
         assert pair[2] == BridgeType.SINGLE
         left, right = sorted(pair[:2], key=lambda i: i.x)
         assert left.x + 1 < right.x
@@ -49,7 +49,7 @@ class Board:
         row[(left.x + right.x) // 2] = "-"
         row[right.x] = str(right.value)
 
-    def draw_vertical(self, pair):
+    def _draw_vertical(self, pair):
         assert pair[2] == BridgeType.SINGLE
         bottom, top = sorted(pair[:2], key=lambda i: i.y)
         assert bottom.y + 1 < top.y
