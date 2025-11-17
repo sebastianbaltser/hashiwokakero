@@ -26,9 +26,53 @@ class SolvePuzzle:
         for island in puzzle:
             other_islands = puzzle.copy()
             other_islands.remove(island)
-            other_islands = {
-                island for island in other_islands if island.remaining_value
+            vertically_aligned_islands = {
+                other for other in other_islands if island.is_vertically_aligned(other)
             }
+            up_neighbours = {
+                other for other in vertically_aligned_islands if island.y < other.y
+            }
+            down_neighbours = {
+                other for other in vertically_aligned_islands if other.y < island.y
+            }
+            up_neighbour = min(
+                up_neighbours, key=lambda other: abs(other.y - island.y), default=None
+            )
+            down_neighbour = min(
+                down_neighbours, key=lambda other: abs(other.y - island.y), default=None
+            )
+
+            horizontally_aligned_islands = {
+                other
+                for other in other_islands
+                if island.is_horizontally_aligned(other)
+            }
+            left_neighbours = {
+                other for other in horizontally_aligned_islands if island.x < other.x
+            }
+            right_neighbours = {
+                other for other in horizontally_aligned_islands if other.x < island.x
+            }
+            left_neighbour = min(
+                left_neighbours, key=lambda other: abs(other.x - island.x), default=None
+            )
+            right_neighbour = min(
+                right_neighbours,
+                key=lambda other: abs(other.x - island.x),
+                default=None,
+            )
+
+            neighbours = set()
+            for neighbour in {
+                up_neighbour,
+                down_neighbour,
+                left_neighbour,
+                right_neighbour,
+            }:
+                if neighbour is not None and 0 < neighbour.remaining_value:
+                    neighbours.add(neighbour)
+
+            other_islands = neighbours
 
             for i in range(island.remaining_value):
                 if any(
