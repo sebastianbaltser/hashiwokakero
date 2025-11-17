@@ -61,6 +61,10 @@ class SolvePuzzle:
                 other_islands.remove(other_island)
                 island.build_bridge(other_island)
 
+        pairs = self._create_pairs(puzzle)
+        return pairs
+
+    def _create_pairs(self, puzzle):
         pairs = []
         for island in puzzle:
             for other_island in island.connected_islands:
